@@ -1,7 +1,9 @@
 let systemColorScheme;
 let theme;
-const btn_tema = document.getElementById("btn_tema");
+
+const checkboxTheme = document.getElementById('checkbox');
 const root = document.getElementById('root');
+
 
 function changeAppTheme(){
     
@@ -34,7 +36,7 @@ function detectSystemColorSchemeUser() {
     theme = systemColorScheme;
 }
 
-btn_tema.addEventListener('click', changeAppTheme);
+checkboxTheme.addEventListener('click', changeAppTheme);
 
 // Llama a la función al cargar la página
 window.addEventListener('load', () => {
