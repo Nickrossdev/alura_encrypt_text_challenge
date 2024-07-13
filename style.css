@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --primary-font-family: 'Inter', 'Sans serif';
+
+    --primary-color: #0a3871;
+    --secondary-color: #e5e5e5;
+    --tertiary-color:#343a40;
+    --cuaternary-color: #fff;
+
+    --primary-color-dark: #e5e5e5;
+    --secondary-color-dark: #0a3871;
+    --tertiary-color-dark: #343a40;
+    --cuaternary-color-dark: #fff;
+
+
+    --primary-color-bg: var(--secondary-color);
+    --secondary-color-bg: var(--cuaternary-color);
+
+    --primary-color-bg-dark: var(--secondary-color-dark);
+    --secondary-color-bg-dark: var(--primary-color-bg-dark);
+
+
+    --primary-color-font: var(--primary-color);
+    --secondary-color-font: var(--cuaternary-color);
+
+    --primary-color-font-dark: var(--cuaternary-color-dark);
+    --secondary-color-font-dark: var(--tertiary-color-dark);
+
+    /* elementos */
+    --dark-button-primary-bg: var(--primary-color-dark);
+    --dark-button-primary-color: var(--secondary-color-dark);
+    --dark-button-primary-border: var(--secondary-color-dark);
+
+    --button-primary-bg: var(--primary-color);
+    --button-primary-color: var(--cuaternary-color);
+    --button-primary-border: var(--primary-color);
+
+
+    color-scheme: light dark;
+}
+
+/* reset style */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* style theme user*/
+.app {
+    background-color: light-dark(var(--primary-color-bg-light), var(--primary-color-bg-dark));
+    font-family: var(--primary-font-family);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 2fr 2fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "aside"
+        "footer"
+    ;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+.app.light {
+    color-scheme: light;
+}
+
+.app.dark {
+    color-scheme: dark;
+}
+
+/* style header app*/
+
+.header {
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.logo__svg {
+    width: 5rem;
+    fill: light-dark(var(--primary-color-light), var(--primary-color-dark));
+}
+
+.button {
+    width: 100%;
+    font-family: var(--primary-font-family);
+    font-weight: 400;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid;
+    border-color: light-dark(var(--primary-color-light), var(--primary-color-dark));
+    border-radius: 1rem;
+    
+}
+
+/* style main app */
+
+.main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.main__text-area {
+    width: 100%;
+    resize: none;
+    min-height: 10rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: var(--primary-font-family);
+    color: light-dark(var(--primary-color-font-light),var(--primary-color-font-dark));
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.main__text-area::placeholder {
+    color: light-dark(var(--primary-color-font-light),var(--primary-color-font-dark));
+}
+
+.main__section-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+}
+
+.info__icon {
+    display: block;
+}
+
+.main__container-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
+}
+
+.button--primary {
+    background-color: light-dark(var(--primary-color-light), var(--dark-button-primary-bg));
+    color: light-dark(var(--secondary-color-font-light), var(--dark-button-primary-color));
+}
+
+.button--secondary {
+    background-color: transparent;
+    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+}
+
+/* style aside app */
+
+.aside {
+    grid-area: aside;
+    background-color: light-dark(var(--secondary-color-bg-light),var(--secondary-color-bg-dark));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: .5rem;
+    min-height: 100%;
+}
+
+.message.inactive {
+    display: none;
+}
+
+.message__image{
+    display: none;
+}
+
+.message__svg {
+    max-width: 16rem;
+}
+
+.message__title {
+    font-size: 1.2rem;
+}
+
+.message__text {
+    font-size: 1rem;
+}
+
+.aside__section-top.inactive{
+    display: none;
+}
+
+.aside__section-bottom.inactive {
+    display: none;
+}
+
+.button--tertiary {
+    width: 100%;
+}
+
+/* style footer app */
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: light-dark(var(--primary-color-bg-light), var(--primary-color-bg-dark));
+
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    gap: .8rem;
+    font-size: 1.5rem;
+    list-style: none;
+}
+
+.social__link {
+    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+}
+
+.footer__text {
+    font-weight: 400;
+    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+}
+
+.text--strong {
+    font-weight: 600;
+}
+
+.footer__link {
+    font-weight: 500;
+    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+}
+
+
+
+/*media querys*/
+/*tablet*/
+@media (min-width: 768px) {
+    .main__container-buttons {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
+}
+
+/*desktop*/
+@media (min-width: 1024px) {
+    .message__image {
+        display: block;
+    }
+    .app {
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: auto 3fr auto;
+        grid-template-areas:
+            "header aside"
+            "main aside"
+            "footer aside"
+        ;
+    }
+}
