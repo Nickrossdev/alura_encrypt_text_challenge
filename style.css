@@ -2,41 +2,10 @@
 
 :root {
     --primary-font-family: 'Inter', 'Sans serif';
-
     --primary-color: #0a3871;
     --secondary-color: #e5e5e5;
-    --tertiary-color:#343a40;
+    --tertiaty-color: #343a40;
     --cuaternary-color: #fff;
-
-    --primary-color-dark: #e5e5e5;
-    --secondary-color-dark: #0a3871;
-    --tertiary-color-dark: #343a40;
-    --cuaternary-color-dark: #fff;
-
-
-    --primary-color-bg: var(--secondary-color);
-    --secondary-color-bg: var(--cuaternary-color);
-
-    --primary-color-bg-dark: var(--secondary-color-dark);
-    --secondary-color-bg-dark: var(--primary-color-bg-dark);
-
-
-    --primary-color-font: var(--primary-color);
-    --secondary-color-font: var(--cuaternary-color);
-
-    --primary-color-font-dark: var(--cuaternary-color-dark);
-    --secondary-color-font-dark: var(--tertiary-color-dark);
-
-    /* elementos */
-    --dark-button-primary-bg: var(--primary-color-dark);
-    --dark-button-primary-color: var(--secondary-color-dark);
-    --dark-button-primary-border: var(--secondary-color-dark);
-
-    --button-primary-bg: var(--primary-color);
-    --button-primary-color: var(--cuaternary-color);
-    --button-primary-border: var(--primary-color);
-
-
     color-scheme: light dark;
 }
 
@@ -50,7 +19,7 @@
 
 /* style theme user*/
 .app {
-    background-color: light-dark(var(--primary-color-bg-light), var(--primary-color-bg-dark));
+    background-color: light-dark(var(--cuaternary-color), var(--primary-color));
     font-family: var(--primary-font-family);
     display: grid;
     grid-template-columns: 1fr;
@@ -87,7 +56,7 @@
 
 .logo__svg {
     width: 5rem;
-    fill: light-dark(var(--primary-color-light), var(--primary-color-dark));
+    fill: light-dark(var(--primary-color), var(--cuaternary-color));
 }
 
 .button {
@@ -99,10 +68,62 @@
     cursor: pointer;
     padding: 1rem 2rem;
     border: 1px solid;
-    border-color: light-dark(var(--primary-color-light), var(--primary-color-dark));
+    border-color: light-dark(var(--primary-color), var(--secondary-color));
     border-radius: 1rem;
     
 }
+
+.switch {
+    font-size: 1rem;
+    position: relative;
+    display: inline-block;
+    width: 3.7em;
+    height: 1.9em;
+   }
+   
+   .switch input {
+    display: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+   }
+   
+   .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    transition: .2s;
+    border-radius: 2rem;
+   }
+   
+   .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 2rem;
+    left: 0.2em;
+    bottom: 0.2em;
+    background-color: var(--cuaternary-color);
+    transition: .4s;
+   }
+   
+   input:checked + .slider::before {
+    background-color: var(--primary-color);
+   }
+   
+   input:checked + .slider {
+    background-color: var(--cuaternary-color);
+   }
+
+   
+   input:checked + .slider:before {
+    transform: translateX(1.9em);
+   }
 
 /* style main app */
 
@@ -122,13 +143,13 @@
     outline: none;
     background-color: transparent;
     font-family: var(--primary-font-family);
-    color: light-dark(var(--primary-color-font-light),var(--primary-color-font-dark));
-    font-size: 1.1rem;
-    font-weight: 400;
+    color: light-dark(var(--primary-color),var(--secondary-color));
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .main__text-area::placeholder {
-    color: light-dark(var(--primary-color-font-light),var(--primary-color-font-dark));
+    color: light-dark(var(--primary-color),var(--secondary-color));
 }
 
 .main__section-bottom {
@@ -141,11 +162,17 @@
     display: flex;
     align-items: center;
     gap: .5rem;
-
+    color: light-dark(var(--primary-color),var(--secondary-color));
 }
 
 .info__icon {
     display: block;
+    color: light-dark(var(--primary-color),var(--secondary-color));
+    font-size: 1.1rem;
+}
+
+.info__text {
+    font-size: .9rem;
 }
 
 .main__container-buttons {
@@ -156,25 +183,28 @@
 }
 
 .button--primary {
-    background-color: light-dark(var(--primary-color-light), var(--dark-button-primary-bg));
-    color: light-dark(var(--secondary-color-font-light), var(--dark-button-primary-color));
+    background-color: light-dark(var(--primary-color), var(--cuaternary-color));
+    color: light-dark(var(--secondary-color), var(--primary-color));
 }
 
 .button--secondary {
     background-color: transparent;
-    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+    color: light-dark(var(--primary-color), var(--secondary-color));
+
 }
 
 /* style aside app */
 
 .aside {
     grid-area: aside;
-    background-color: light-dark(var(--secondary-color-bg-light),var(--secondary-color-bg-dark));
+    background-color: var(--cuaternary-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
     border-radius: 2rem;
+    border: 1px solid;
+    border-color: light-dark(var(--primary-color), var(--cuaternary-color));
 }
 
 .message {
@@ -201,10 +231,12 @@
 
 .message__title {
     font-size: 1.2rem;
+    color: var(--primary-color);
 }
 
 .message__text {
     font-size: 1rem;
+    color: var(--primary-color);
 }
 
 .aside__section-top.inactive{
@@ -228,34 +260,35 @@
     gap: 1rem;
     justify-content: space-between;
     align-items: center;
-    background-color: light-dark(var(--primary-color-bg-light), var(--primary-color-bg-dark));
-
+    color: light-dark(var(--primary-color), var(--cuaternary-color));
 }
 
 .social {
     display: flex;
     flex-direction: row;
-    gap: .8rem;
-    font-size: 1.5rem;
+    gap: 1rem;
+    font-size: 1.3rem;
     list-style: none;
 }
 
 .social__link {
-    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+    color: inherit;
 }
 
 .footer__text {
     font-weight: 400;
-    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+    color: inherit;
+    font-size: .8rem;
 }
 
 .text--strong {
     font-weight: 600;
+    font-size: .9rem;
 }
 
 .footer__link {
     font-weight: 500;
-    color: light-dark(var(--primary-color-font-light), var(--primary-color-font-dark));
+    color: inherit;
 }
 
 
