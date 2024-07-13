@@ -54,7 +54,11 @@
     padding: 1rem;
 }
 
-.logo__svg {
+.header__link {
+    display: inline-block;
+}
+
+.header__svg {
     width: 5rem;
     fill: light-dark(var(--primary-color), var(--cuaternary-color));
 }
@@ -310,7 +314,7 @@
         display: block;
     }
     .app {
-        grid-template-columns: 4fr 1fr;
+        grid-template-columns: 3fr 1fr;
         grid-template-rows: auto 3fr auto;
         grid-template-areas:
             "header aside"
