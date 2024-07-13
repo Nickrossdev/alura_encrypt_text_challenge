@@ -6,6 +6,9 @@
     --secondary-color: #e5e5e5;
     --tertiaty-color: #343a40;
     --cuaternary-color: #fff;
+
+    --color-error-light: #fa0909;
+    --colot-error-dark: #ffc400;
     color-scheme: light dark;
 }
 
@@ -139,6 +142,12 @@
     padding: 1rem;
 }
 
+.main__section-top {
+    display: flex;
+    flex-direction: column;
+
+}
+
 .main__text-area {
     width: 100%;
     resize: none;
@@ -154,6 +163,11 @@
 
 .main__text-area::placeholder {
     color: light-dark(var(--primary-color),var(--secondary-color));
+}
+
+.main__text-area.active,
+.main__text-area.active::placeholder{
+    color: light-dark(var(--color-error-light), var(--colot-error-dark));
 }
 
 .main__section-bottom {
@@ -175,8 +189,18 @@
     font-size: 1.1rem;
 }
 
+.info__icon.active {
+    color: light-dark(var(--color-error-light), var(--colot-error-dark));
+}
+
 .info__text {
     font-size: .9rem;
+}
+
+
+.info__text.active {
+    color: light-dark(var(--color-error-light), var(--colot-error-dark));
+    font-weight: 600;
 }
 
 .main__container-buttons {
@@ -278,6 +302,18 @@
 
 .social__link {
     color: inherit;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 2.2rem;
+    min-height: 2.2rem;
+    border-radius: 50%;
+}
+
+.social__link:hover {
+    background-color: light-dark(var(--primary-color), var(--cuaternary-color));
+    color: light-dark(var(--cuaternary-color), var(--primary-color))
 }
 
 .footer__text {
