@@ -221,12 +221,13 @@
     display: none;
 }
 
-.message__image{
+.message__picture{
     display: none;
+    max-width: 16rem;
 }
 
-.message__svg {
-    max-width: 16rem;
+.message__image {
+    width: 100%;
 }
 
 .message__title {
@@ -305,7 +306,7 @@
 
 /*desktop*/
 @media (min-width: 1024px) {
-    .message__image {
+    .message__picture {
         display: block;
     }
     .app {
