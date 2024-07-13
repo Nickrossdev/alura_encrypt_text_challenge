@@ -8,4 +8,7 @@ Este proyecto es parte del desafío de Alura, cuyo objetivo es crear una aplicac
 - [Uso](#uso)
 - [Contacto](#contacto)
 ## Descripción
-Este proyecto es parte del desafío de Alura, cuyo objetivo es crear una aplicación que encripta y desencripta textos utilizando un conjunto específico de reglas de encriptación. Esto permite a los usuarios intercambiar mensajes secretos.
+
+
+## Uso
+[Aun sin la funcionalidad completa solo estilos](https://alura-encrypt-text-challenge.vercel.app/);
