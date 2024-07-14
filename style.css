@@ -77,7 +77,6 @@
     border: 1px solid;
     border-color: light-dark(var(--primary-color), var(--secondary-color));
     border-radius: 1rem;
-    
 }
 
 .switch {
@@ -102,7 +101,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--primary-color);
+    background-color: light-dark(var(--primary-color), var(--cuaternary-color));
     transition: .2s;
     border-radius: 2rem;
    }
@@ -115,16 +114,16 @@
     border-radius: 2rem;
     left: 0.2em;
     bottom: 0.2em;
-    background-color: var(--cuaternary-color);
+    background-color: light-dark(var(--cuaternary-color), var(--primary-color));
     transition: .4s;
    }
    
    input:checked + .slider::before {
-    background-color: var(--primary-color);
+    background-color: light-dark(var(--cuaternary-color), var(--primary-color));
    }
    
    input:checked + .slider {
-    background-color: var(--cuaternary-color);
+    background-color: light-dark(var(--primary-color), var(--cuaternary-color));
    }
 
    
@@ -229,7 +228,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 2rem;
     border: 1px solid;
     border-color: light-dark(var(--primary-color), var(--cuaternary-color));
@@ -278,6 +277,12 @@
 
 .button--tertiary {
     width: 100%;
+}
+
+.aside__text {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /* style footer app */
