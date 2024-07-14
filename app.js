@@ -38,7 +38,7 @@ function encrypt(text) {
     }
     wordsEncrypt.push(wordEncrypt);
   }
-  showResultProcess(wordsEncrypt.join(''));
+  showResultProcess(wordsEncrypt.join(' '));
 }
 
 function decrypt(text) {
