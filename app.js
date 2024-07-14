@@ -26,28 +26,28 @@ function encrypt(text) {
     for (let letter of word) {
       let found = false;
       for (let rule of DICTIONARY) {
-        if (letter === rule[0]){
+        if (letter === rule[0]) {
           wordEncrypt += rule[1];
           found = true;
           break;
         }
       }
-      if(!found){
+      if (!found) {
         wordEncrypt += letter
       }
     }
     wordsEncrypt.push(wordEncrypt);
   }
-  console.log(wordsEncrypt.join(' '));
+  showResultProcess(wordsEncrypt.join(''));
 }
 
 function decrypt(text) {
   let textDecrypt = text;
-  for(let rule of DICTIONARY){
+  for (let rule of DICTIONARY) {
     let regex = new RegExp(rule[1], 'g');
     textDecrypt = textDecrypt.replace(regex, rule[0]);
   }
-  console.log(textDecrypt);
+  showResultProcess(textDecrypt);
 }
 
 function processText(accion) {
@@ -62,6 +62,18 @@ function processText(accion) {
       decrypt(text);
       break;
   }
+}
+
+function showResultProcess(text) {
+  const textSalida = document.getElementById('text_salida');
+  const sectionAsideTop = document.getElementById('section_aside_top');
+  const sectionAsideBottom = document.getElementById('section_aside_bottom');
+  const message = document.getElementById('message');
+
+  textSalida.textContent = text;
+  sectionAsideTop.classList.remove('inactive');
+  sectionAsideBottom.classList.remove('inactive');
+  message.classList.add('inactive');
 }
 
 function obtainText() {
