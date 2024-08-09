@@ -220,6 +220,11 @@
 
 }
 
+.button--tertiary {
+    background-color: light-dark(var(--secondary-color), var(--primary-color));
+    color: light-dark( var(--primary-color), var(--secondary-color));
+}
+
 /* style aside app */
 
 .aside {
