@@ -11,4 +11,4 @@ Este proyecto es parte del desafío de Alura, cuyo objetivo es crear una aplicac
 
 
 ## Uso
-[Aun sin la funcionalidad completa solo estilos](https://alura-encrypt-text-challenge.vercel.app/);
+[VER PROYECTO DEPLOYADO](https://alura-encrypt-text-challenge.vercel.app/);
