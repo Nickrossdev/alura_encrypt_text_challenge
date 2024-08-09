@@ -168,7 +168,6 @@ function errorTextEntrada(message) {
   infoIcon.classList.add('active');
   textEntrada.classList.add('active');
   setTimeout(() => {
-    console.log(infoText.textContent);
     infoText.classList.remove('active');
     infoIcon.classList.remove('active');
     textEntrada.classList.remove('active');
@@ -178,17 +177,14 @@ function errorTextEntrada(message) {
 }
 
 async function copy() {
-  console.log('copiado');
   const textSalida = document.getElementById('text_salida').textContent;
   try {
     await navigator.clipboard.writeText(textSalida);
-    console.log('copiado!')
     buttonCopy.textContent = 'Copiado!';
     setTimeout(() => {
       buttonCopy.textContent = 'Copiar'
     }, 1500);
   } catch (error) {
-    console.log('Error al copiar', error)
   }
 
 }
