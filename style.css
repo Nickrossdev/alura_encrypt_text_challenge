@@ -134,14 +134,18 @@
 /* style main app */
 
 .main {
+    width: 100%;
+    max-width: 100%;
     grid-area: main;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
+    gap: 1rem;
 }
 
 .main__section-top {
+    width: 100%;
     display: flex;
     flex-direction: column;
 
@@ -149,15 +153,23 @@
 
 .main__text-area {
     width: 100%;
-    resize: none;
+    height: 20rem;
+    max-height: 20rem;
     min-height: 10rem;
+    resize: none;
     border: none;
     outline: none;
     background-color: transparent;
     font-family: var(--primary-font-family);
-    color: light-dark(var(--primary-color),var(--secondary-color));
+    color: light-dark(var(--primary-color), var(--secondary-color));
     font-size: 1.2rem;
     font-weight: 500;
+    word-break: break-all;
+
+}
+
+.main__text-area::-webkit-scrollbar {
+    display: none;
 }
 
 .main__text-area::placeholder {
@@ -229,6 +241,7 @@
 
 .aside {
     grid-area: aside;
+    gap: 1rem;
     background-color: var(--cuaternary-color);
     display: flex;
     flex-direction: column;
@@ -288,6 +301,14 @@
     color: var(--primary-color);
     font-size: 1.2rem;
     font-weight: 500;
+    max-height: 25rem;
+    width: 100%;
+    overflow-y: scroll;
+    word-break: break-all;
+}
+
+.aside__text::-webkit-scrollbar {
+    display: none;
 }
 
 /* style footer app */
