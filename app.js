@@ -11,10 +11,22 @@ const buttonEncrypt = document.getElementById('button_encrypt');
 const buttonDecrypt = document.getElementById('button_decrypt');
 const buttonCopy = document.getElementById('button_copy');
 
+/* variable para el resultado */
+let isResolve = false;
+
 /* Eventos de botones */
+document.addEventListener('DOMContentLoaded',()=>{
+  textEntrada.focus();
+})
 buttonEncrypt.addEventListener('click', () => processText('encrypt'));
 buttonDecrypt.addEventListener('click', () => processText('decrypt'));
 buttonCopy.addEventListener('click', copy);
+textEntrada.addEventListener('focus',()=>{
+  if(isResolve === true){
+    clearTextEntrada();
+    isResolve = false;
+  }
+})
 
 /* Funciones de la app*/
 function encrypt(text) {
@@ -52,6 +64,7 @@ function decrypt(text) {
 
 function processText(accion) {
   let text = obtainText();
+  text = normalizeText(text);
   text = validateText(text);
   if (text === null) return;
   switch (accion) {
@@ -69,6 +82,8 @@ function showResultProcess(text) {
   const sectionAsideTop = document.getElementById('section_aside_top');
   const sectionAsideBottom = document.getElementById('section_aside_bottom');
   const message = document.getElementById('message');
+
+  isResolve = true;
 
   textSalida.textContent = text;
   sectionAsideTop.classList.remove('inactive');
@@ -89,17 +104,18 @@ function validateText(text) {
   if (text === '') {
     let message = 'Por favor antes de empezar introduce un texto';
     errorTextEntrada(message);
-    console.log(message);
     return null;
   } else if (detectMayusc(text) === true) {
     let message = 'Por favor introduzca solo letras minúsculas';
     errorTextEntrada(message);
-    console.log(message);
     return null;
   } else if (detectAccent(text) === true) {
     let message = 'Por favor introduzca solo letras sin tildes';
-    errorTextEntrada(message)
-    console.log(message);
+    errorTextEntrada(message);
+    return null;
+  } else if(detectSpecialCharacter(text)=== true){
+    let message = 'Por favor introduzca un texto sin caracteres especiales';
+    errorTextEntrada(message);
     return null;
   }
   return text;
@@ -112,7 +128,7 @@ function detectMayusc(text) {
   for (let word of words) {
     if (isMayusc === true) break;
     for (let letter of word) {
-      if (letter === letter.toUpperCase()) {
+      if (letter === letter.toUpperCase() && letter != letter.toLowerCase()) {
         isMayusc = true;
         break;
       }
@@ -138,6 +154,11 @@ function detectAccent(text) {
   return isAccent;
 }
 
+function detectSpecialCharacter(text){
+  const specialCharRegex = /[^a-zA-Z0-9\s]/;
+  return specialCharRegex.test(text);
+}
+
 function errorTextEntrada(message) {
   let infoText = document.getElementById('info_text');
   let infoIcon = document.getElementById('info_icon');
@@ -146,7 +167,6 @@ function errorTextEntrada(message) {
   infoText.classList.add('active');
   infoIcon.classList.add('active');
   textEntrada.classList.add('active');
-  console.log(infoText)
   setTimeout(() => {
     console.log(infoText.textContent);
     infoText.classList.remove('active');
@@ -175,7 +195,7 @@ async function copy() {
 
 /* Funciones Auxiliares */
 
-function limpiarTextEntrada() {
+function clearTextEntrada() {
   const textEntrada = document.getElementById('text_entrada');
   textEntrada.value = '';
 }
