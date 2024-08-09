@@ -211,7 +211,7 @@
 
 .button--primary {
     background-color: light-dark(var(--primary-color), var(--cuaternary-color));
-    color: light-dark(var(--secondary-color), var(--primary-color));
+    color: light-dark(var(--cuaternary-color), var(--primary-color));
 }
 
 .button--secondary {
